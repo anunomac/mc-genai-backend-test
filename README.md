@@ -8,7 +8,7 @@ Create a user interface with a **text input box** and a **submit button**.
 Display the sentiment score and a **textual** sentiment (e.g., "Positive", "Negative", "Neutral") upon submission
 
 Set up a POST REST API endpoint to handle the sentiment analysis requests.
-Integrate a pre-trained sentiment analysis model (e.g., from Hugging Face's Transformers library or any other API like Google Cloud Natural Language API)
+Integrate a Generative AI through REST APIs and use it to perform the desired output.
 
 ### Technical Specifications
 Use the `app` solution folder to include the source code with .NET 6+ (Preferencial) or Node.js with Express.
