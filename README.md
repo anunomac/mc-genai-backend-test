@@ -7,8 +7,7 @@ Develop a web application that allows users to input text and receive a sentimen
 Create a user interface with a **text input box** and a **submit button**.
 Display the sentiment score and a **textual** sentiment (e.g., "Positive", "Negative", "Neutral") upon submission
 
-Set up a POST REST API endpoint to handle the sentiment analysis requests.
-Integrate a Generative AI through REST APIs and use it to perform the desired output.
+Set up a POST REST API endpoint to handle the sentiment analysis requests. And, integrate with Generative AI through REST APIs and to perform the desired output.
 
 ### Technical Specifications
 Use the `app` solution folder to include the source code with .NET 6+ (Preferencial) or Node.js with Express.
