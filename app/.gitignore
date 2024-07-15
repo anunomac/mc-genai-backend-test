@@ -3,6 +3,16 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+#Virtual environment
+/.venv/*
+
+#django migrations folders
+/base_analyzer/migrations/*
+
+#django sqlite3 db - local dep tests
+db.sqlite3
+
+
 # User-specific files
 *.rsuser
 *.suo
