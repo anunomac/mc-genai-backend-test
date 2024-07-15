@@ -7,8 +7,11 @@
 /.venv/*
 
 #django migrations folders
-/base_analyzer/migrations/*
+/*/migrations/*
 
+#pycharm files and folders
+#*/.idea/*
+../.idea
 #django sqlite3 db - local dep tests
 db.sqlite3
 
@@ -538,3 +541,4 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+/SentimentAnalyzer/.idea/
