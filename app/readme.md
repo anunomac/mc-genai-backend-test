@@ -46,15 +46,23 @@ Note: using celery/rabbitMQ is not mandatory, simply replace function calls for 
 ### 1. Start RabbitMQ    
  If you are using Docker:    
     
-```bash docker start rabbitmq ```   
+```bash
+docker start rabbitmq
+```   
  If you installed RabbitMQ manually, ensure it is running.    
     
 ### 2. Run Django Migrations    
- ```bash python manage.py makemigrations python manage.py migrate ```   
+ ```bash
+ python manage.py makemigrations python manage.py migrate
+ ```   
  ### 3. Start Django Development Server    
- ```bash python manage.py runserver ```   
+ ```bash
+ python manage.py runserver
+ ```   
  ### 4. Start Celery Worker    
- ```bash celery -A SentimentAnalyzer worker --loglevel=INFO -P solo #-P solo is sometimes required on windows due to concurrency/threading problems ```   
+ ```bash
+ celery -A SentimentAnalyzer worker --loglevel=INFO -P solo #-P solo is sometimes required on windows due to concurrency/threading problems
+ ```   
 
  ## API documentation    
  ### Initiate a Sentiment Analysis    
@@ -72,7 +80,7 @@ Note: using celery/rabbitMQ is not mandatory, simply replace function calls for 
  Use the provided API endpoint to check the classification status.    
     
 #### Example Request    
- ```bash
+ ```
   GET /classifications/?cid=<classification_id>&access_key=<access_key>
   ```   
 
