@@ -30,7 +30,7 @@ model_status=(
 )
 class Model(models.Model):
     '''
-    For the purposes of this test, only one model will be used, however it would be possible to provide more models for users to use.
+    This represents the AI model being used to classify the text sentiment.
     '''
     date_added=models.DateTimeField(auto_now_add=True)
     public_name=models.CharField(max_length=100)
@@ -40,21 +40,18 @@ class Model(models.Model):
     status=models.IntegerField(choices=model_status, default=1)
 
     def validate_and_download_model(self):
+        '''
+        Download the model, once finished the model will be available on the frontend for selection.
+        The validity check to ensure the model is a sentiment analysis model is not very robust, so care should be taken.
+        '''
         send_task("base_analyzer.tasks.validate_and_download_model", args=(self.id,))
 
     def validate_and_download_model_SYNC(self):
+        '''
+        Use only for testing! can take a long time.
+        '''
         from .tasks import validate_and_download_model
         validate_and_download_model(self.id)
-
-            # languages=models.CharField(max_length=100)
-# class Sentiment_LOG(models.Model):
-#     '''
-#     Logs the user submitted sentiment request and classification by the model
-#     '''
-#     date_added=models.DateTimeField(auto_now_add=True)
-#     model_used=models.ForeignKey(Model,on_delete=models.CASCADE)
-#     user_message=models.TextField()
-#     model_classification=models.CharField(max_length=100)
 
 classification_status=(
     (1,"Submitted"),
@@ -70,6 +67,7 @@ class Classification_request(models.Model):
     model_classification_score=models.FloatField(null=True, blank=True)
 
     secret_key=models.CharField(max_length=100,default=generate_secret_key, editable=False)
+    #we are not saving sensitive data here so protection is not a priority.
 
     def init_classification(self):
         '''
@@ -87,3 +85,20 @@ class Classification_request(models.Model):
         from .tasks import process_classification_request
         process_classification_request(self.id)
         return
+
+class GenericErrorLog(models.Model):
+    '''
+    Used to log any error to the database. usefull when we are not sure what errors to expect and logging them to the database allows for better filtering and search when debugging
+    '''
+    source=models.CharField(max_length=100)#Usually method where the error happened
+    exception=models.CharField(max_length=100)#Python exception raised
+    traceback=models.TextField(blank=True)#full error traceback for better debugging.
+    
+def log_exception(exception, traceback,function):
+    '''Helper function to log an exception to the database'''
+    obj=GenericErrorLog.objects.create(
+        exception=str(exception),
+        traceback=traceback,
+        source=function,
+    )
+    return obj.id
