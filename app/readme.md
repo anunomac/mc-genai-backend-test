@@ -62,7 +62,7 @@ Note: using celery/rabbitMQ is not mandatory, simply replace function calls for 
     
 #### Example Request    
  ```bash
- POST /
+ POST /classifications/
   {    
  "query": "Your text here",    
  "model": 1
@@ -73,8 +73,18 @@ Note: using celery/rabbitMQ is not mandatory, simply replace function calls for 
     
 #### Example Request    
  ```bash
-  GET /get_status?cid=<classification_id>&access_key=<access_key>
+  GET /classifications/?cid=<classification_id>&access_key=<access_key>
   ```   
+
+### OpenAPI documentation
+The API documentation for this project is available in OpenAPI format and can be accessed via Swagger UI or ReDoc.  
+  
+### Accessing the Documentation
+  
+- **Swagger UI**: [http://127.0.0.1:8000/swagger/](http://127.0.0.1:8000/swagger/)  
+- **ReDoc**: [http://127.0.0.1:8000/redoc/](http://127.0.0.1:8000/redoc/)  
+- **OpenAPI JSON**: [http://127.0.0.1:8000/swagger.json](http://127.0.0.1:8000/swagger.json)  
+- **OpenAPI YAML**: [http://127.0.0.1:8000/swagger.yaml](http://127.0.0.1:8000/swagger.yaml)
 ### Additional Resources    
     
 - [Celery Documentation](https://docs.celeryproject.org/)    
