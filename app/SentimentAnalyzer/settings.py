@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-0=&g*s_02d*&y8e)8)wc-wg1dsh-tj()p##&on&x-o+g28+#2-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sograpp.com','www.sograpp.com', '127.0.0.1','localhost']
 
 
 # Application definition
@@ -53,10 +53,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+#     'http://127.0.0.1:3000',
+# ]
+CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins
 ROOT_URLCONF = 'SentimentAnalyzer.urls'
 
 TEMPLATES = [
@@ -88,7 +89,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'mctest',
+#         'USER': 'mcuser',
+#         'PASSWORD': 'mcpass',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -126,6 +136,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = "/collectedstatic/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

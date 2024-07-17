@@ -9,6 +9,7 @@
 #django migrations folders
 /*/migrations/*
 
+/collectedstatic/*
 #pycharm files and folders
 #*/.idea/*
 ../.idea

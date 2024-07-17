@@ -20,7 +20,8 @@ This repository contains the setup for a Django project integrated with Celery f
 ## Installation    
  ### 1. Clone the Repository    
  ```bash
- git clone https://github.com/anunomac/mc-genai-backend-test.git cd yourrepository
+ git clone https://github.com/anunomac/mc-genai-backend-test.git
+ cd mc-genai-backend-test/app
  ```   
  ### 2. Create a Virtual Environment    
  ```bash
@@ -31,6 +32,7 @@ This repository contains the setup for a Django project integrated with Celery f
  ```bash
  pip install -r requirements.txt
  ```   
+install pytorch via command generated in [pytorch](https://pytorch.org/)
  ### 4. Install RabbitMQ    
  #### Option 1: Using Docker    
  ```bash

@@ -10,10 +10,11 @@ import traceback
 @shared_task
 def process_classification_request(request_id):
     print(f"[LOG] Start processing classification request {request_id}")
-    classification_request = Classification_request.objects.select_for_update().get(id=request_id)
-    try:
-        # a=1/0 #force error
-        with transaction.atomic():
+    with transaction.atomic():
+        classification_request = Classification_request.objects.select_for_update().get(id=request_id)
+        try:
+            # a=1/0 #force error
+
             classification_request.status = 2  # Processing
             classification_request.save()
 
@@ -32,12 +33,12 @@ def process_classification_request(request_id):
             classification_request.status = 3  # Complete
             classification_request.save()
 
-    except Exception as e:
-        classification_request.status = 0  # Failed
-        classification_request.save()
-        err_id=log_exception(e,traceback.format_exc(),'process_classification_request')
-        print(f"[LOG] Model setup for {classification_request} failed! error id: {err_id}")
-        raise e
+        except Exception as e:
+            classification_request.status = 0  # Failed
+            classification_request.save()
+            err_id=log_exception(e,traceback.format_exc(),'process_classification_request')
+            print(f"[LOG] Model setup for {classification_request} failed! error id: {err_id}")
+            raise e
     return
 
 @shared_task
