@@ -10,7 +10,7 @@ This repository contains the setup for a Django project integrated with Celery f
 - [API documentation](#api-documentation) 
     
 ## Requirements    
- - Python 3.x    
+ - Python 3.8+    
 - Django    
 - Celery    
 - RabbitMQ (optional)  
@@ -60,12 +60,15 @@ docker start rabbitmq
     
 ### 2. Run Django Migrations    
  ```bash
- python manage.py makemigrations python manage.py migrate
+ python manage.py makemigrations
+ python manage.py migrate
  ```   
  ### 3. Start Django Development Server    
  ```bash
  python manage.py runserver
  ```   
+Which should default to 127.0.0.1:8000
+
  ### 4. Start Celery Worker    
  ```bash
  celery -A SentimentAnalyzer worker --loglevel=INFO -P solo #-P solo is sometimes required on windows due to concurrency/threading problems
