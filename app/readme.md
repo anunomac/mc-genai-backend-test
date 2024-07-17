@@ -13,7 +13,7 @@ This repository contains the setup for a Django project integrated with Celery f
  - Python 3.x    
 - Django    
 - Celery    
-- RabbitMQ    
+- RabbitMQ (optional)  
 - Docker (optional, for RabbitMQ container)    
 - Other python requirements provided in requirements.txt  
     
@@ -33,6 +33,11 @@ This repository contains the setup for a Django project integrated with Celery f
  pip install -r requirements.txt
  ```   
 install pytorch via command generated in [pytorch](https://pytorch.org/)
+
+for production two extra libraries are needed:
+ ```bash
+ pip install psycopg2-binary gunicorn
+ ```   
  ### 4. Install RabbitMQ    
  #### Option 1: Using Docker    
  ```bash
@@ -72,7 +77,7 @@ docker start rabbitmq
     
 #### Example Request    
  ```bash
- POST /classifications/
+ POST /api/classifications/
   {    
  "query": "Your text here",    
  "model": 1
@@ -83,7 +88,7 @@ docker start rabbitmq
     
 #### Example Request    
  ```
-  GET /classifications/?cid=<classification_id>&access_key=<access_key>
+  GET /api/classifications/?cid=<classification_id>&access_key=<access_key>
   ```   
 
 ### OpenAPI documentation
@@ -91,10 +96,10 @@ The API documentation for this project is available in OpenAPI format and can be
   
 ### Accessing the Documentation
   
-- **Swagger UI**: [http://127.0.0.1:8000/swagger/](http://127.0.0.1:8000/swagger/)  
-- **ReDoc**: [http://127.0.0.1:8000/redoc/](http://127.0.0.1:8000/redoc/)  
-- **OpenAPI JSON**: [http://127.0.0.1:8000/swagger.json](http://127.0.0.1:8000/swagger.json)  
-- **OpenAPI YAML**: [http://127.0.0.1:8000/swagger.yaml](http://127.0.0.1:8000/swagger.yaml)
+- **Swagger UI**: [http://127.0.0.1:8000/api/swagger/](http://127.0.0.1:8000/api/swagger/)  
+- **ReDoc**: [http://127.0.0.1:8000/api/redoc/](http://127.0.0.1:8000/api/redoc/)  
+- **OpenAPI JSON**: [http://127.0.0.1:8000/api/swagger.json](http://127.0.0.1:8000/api/swagger.json)  
+- **OpenAPI YAML**: [http://127.0.0.1:8000/api/swagger.yaml](http://127.0.0.1:8000/api/swagger.yaml)
 ### Additional Resources    
     
 - [Celery Documentation](https://docs.celeryproject.org/)    

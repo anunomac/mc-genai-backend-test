@@ -39,7 +39,7 @@ class Get_Models(APIView):
         }
     )
     def post(self, request, format=None):
-        print(request.data)
+        # print(request.data)
         password = request.data.get('password')
         if password != add_new_model_password:
             return Response({'status': False, 'msg': 'Not allowed'}, status=status.HTTP_401_UNAUTHORIZED)
